@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PROJ.API.Models;
 using PROJ.API.Services;
 
@@ -23,6 +24,7 @@ namespace PROJ.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> Get(int id)
         {
             if (id == 0) { return NotFound($"{id} not found"); }
